@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Todo List</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body
+  id="body"
+  class="
+    min-h-screen NM<B>>>>>>>>>>>>>>>>>
+    bg-[#fafafa]
+    text-[#292929]
+    transition-colors
+    duration-300
+  "
+>
+
+ 
+
+  <div
+    id="page"
+    class="
+      min-h-screen
+      px-6
+      pt-8
+      pb-24
+      transition-colors
+      duration-300
+    "
+  >
+
+
+    
+
+    <header class="mx-auto max-w-[1038px]">
+
+      <h1
+        id="pageTitle"
+        class="
+          text-center
+          text-[30px]
+          font-bold
+          text-[#292929]
+          transition-colors
+          duration-300
+        "
+      >
+        TODO LIST
+      </h1>
+
+
+     
+      <div class="mt-[30px] flex items-center gap-5">
+
+
+       
+
+        <div class="relative flex-1">
+
+          <input
+            id="searchInput"
+
+            type="text"
+
+            placeholder="Search note..."
+
+            class="
+              h-12
+              w-full
+              rounded-[7px]
+
+              border-2
+              border-[#665cf6]
+
+              bg-white
+
+              pl-5
+              pr-14
+
+              text-[20px]
+              text-black
+
+              outline-none
+
+              transition-colors
+              duration-300
+
+              placeholder:text-gray-400
+            "
+          >
+
+
+         
+
+          <button
+            type="button"
+
+            class="
+              absolute
+              right-3
+              top-1/2
+
+              -translate-y-1/2
+
+              text-[#665cf6]
+            "
+          >
+
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+            >
+
+              <circle
+                cx="13.5"
+                cy="13.5"
+                r="9.5"
+
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <path
+                d="M20.5 20.5L27 27"
+
+                stroke="currentColor"
+                stroke-width="2"
+
+                stroke-linecap="round"
+              />
+
+            </svg>
+
+          </button>
+
+        </div>
+
+
+        
+
+        <div class="relative">
+
+          <select
+            id="filterSelect"
+
+            class="
+              h-12
+              w-[107px]
+
+              appearance-none
+
+              rounded-[7px]
+
+              bg-[#665cf6]
+
+              px-4
+              pr-8
+
+              text-[19px]
+              font-bold
+              text-white
+
+              outline-none
+
+              cursor-pointer
+            "
+          >
+
+            <option value="all">
+              ALL
+            </option>
+
+            <option value="active">
+              ACTIVE
+            </option>
+
+            <option value="completed">
+              DONE
+            </option>
+
+          </select>
+
+
+         
+
+          <svg
+            class="
+              pointer-events-none
+              absolute
+              right-3
+              top-1/2
+
+              -translate-y-1/2
+
+              text-white
+            "
+
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+
+            <path
+              d="M4 6L8 10L12 6"
+
+              stroke="currentColor"
+              stroke-width="1.6"
+
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </div>
+
+
+       
+
+        <button
+          id="themeBtn"
+
+          type="button"
+
+          aria-label="Change theme"
+
+          class="
+            flex
+            h-12
+            w-12
+            shrink-0
+
+            items-center
+            justify-center
+
+            rounded-[7px]
+
+            bg-[#665cf6]
+
+            text-white
+
+            transition
+
+            hover:scale-105
+          "
+        >
+
+
+          
+          <svg
+            id="moonIcon"
+
+            width="30"
+            height="30"
+
+            viewBox="0 0 30 30"
+
+            fill="none"
+          >
+
+            <path
+              d="
+                M24 18.8
+                C22.8 19.7 21.3 20.2 19.7 20.2
+                C15.6 20.2 12.3 16.9 12.3 12.8
+                C12.3 11.2 12.8 9.7 13.7 8.5
+                C8.9 9.2 5.2 13.3 5.2 18.2
+                C5.2 23.7 9.7 28.2 15.2 28.2
+                C20.1 28.2 24.2 24.5 24.9 19.7
+                C24.6 19.4 24.3 19.1 24 18.8Z
+              "
+
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M22 3V8M19.5 5.5H24.5"
+
+              stroke="white"
+              stroke-width="2"
+
+              stroke-linecap="round"
+            />
+
+          </svg>
+
+
+          
+
+          <svg
+            id="sunIcon"
+
+            class="hidden"
+
+            width="29"
+            height="29"
+
+            viewBox="0 0 29 29"
+
+            fill="none"
+          >
+
+           
+
+            <circle
+              cx="14.5"
+              cy="14.5"
+              r="5"
+
+              stroke="white"
+              stroke-width="2"
+            />
+
+
+            
+
+            <path
+              d="
+                M14.5 2V5
+                M14.5 24V27
+
+                M2 14.5H5
+                M24 14.5H27
+
+                M5.7 5.7L7.8 7.8
+                M21.2 21.2L23.3 23.3
+
+                M23.3 5.7L21.2 7.8
+                M7.8 21.2L5.7 23.3
+              "
+
+              stroke="white"
+              stroke-width="2"
+
+              stroke-linecap="round"
+            />
+
+          </svg>
+
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+    
+
+    <main
+      id="emptyState"
+
+      class="
+        mx-auto
+        mt-[43px]
+
+        flex
+        max-w-[300px]
+
+        flex-col
+        items-center
+
+        text-center
+      "
+    >
+
+      
+
+      <svg
+        width="250"
+        height="205"
+
+        viewBox="0 0 250 205"
+
+        fill="none"
+      >
+
+        <path
+          d="
+            M38 75
+            C33 43 52 20 86 16
+            C119 12 163 18 193 38
+            C222 57 228 87 211 111
+            C197 131 167 139 137 137
+            C107 135 95 150 65 143
+            C37 136 28 112 38 94
+            C44 84 40 79 38 75Z
+          "
+
+          fill="#D3CEFF"
+        />
+
+        <ellipse
+          cx="130"
+          cy="189"
+          rx="94"
+          ry="15"
+
+          fill="#D3CEFF"
+        />
+
+        <circle
+          cx="128"
+          cy="54"
+          r="16"
+
+          fill="#FFB184"
+        />
+
+        <path
+          d="
+            M112 54
+            C109 43 114 33 124 31
+            C136 29 145 36 145 47
+            C145 50 144 53 142 55
+            C138 48 134 44 128 43
+            C123 42 119 47 117 54H112Z
+          "
+
+          fill="#6255F5"
+        />
+
+        <path
+          d="
+            M135 63
+            L156 65
+            L169 85
+            L158 96
+            L151 80
+            L155 112
+            H126
+            L130 75
+            L121 70
+            L128 60
+            L135 63Z
+          "
+
+          fill="#5147D5"
+        />
+
+        <path
+          d="
+            M137 62
+            L148 67
+            L157 88
+            L148 96
+            L138 76
+            L132 67
+            L137 62Z
+          "
+
+          fill="#F3F1FF"
+        />
+
+        <path
+          d="
+            M158 83
+            L176 76
+            L181 85
+            L166 94
+            L155 90
+            L158 83Z
+          "
+
+          fill="#FFB184"
+        />
+
+        <path
+          d="
+            M138 107
+            H153
+            L153 150
+            L145 176
+            L132 173
+            L137 145
+            L138 107Z
+          "
+
+          fill="#292A3B"
+        />
+
+        <path
+          d="
+            M153 107
+            H164
+            L168 149
+            L177 173
+            L164 178
+            L153 151
+            V107Z
+          "
+
+          fill="#292A3B"
+        />
+
+        <path
+          d="M125 89L101 73"
+
+          stroke="#665CF6"
+          stroke-width="4"
+
+          stroke-linecap="round"
+        />
+
+        <ellipse
+          cx="94"
+          cy="67"
+
+          rx="8"
+          ry="17"
+
+          transform="rotate(-45 94 67)"
+
+          stroke="#665CF6"
+          stroke-width="2.5"
+        />
+
+      </svg>
+
+
+      <p
+        id="emptyText"
+
+        class="
+          mt-[26px]
+
+          text-[24px]
+          font-medium
+
+          text-[#292929]
+
+          transition-colors
+          duration-300
+        "
+      >
+        Empty...
+      </p>
+
+    </main>
+
+
+
+   
+
+    <main
+      id="todoList"
+
+      class="
+        mx-auto
+        mt-8
+
+        hidden
+
+        max-w-[1038px]
+
+        space-y-3
+      "
+    ></main>
+
+
+
+    
+
+    <button
+      id="addBtn"
+
+      type="button"
+
+      aria-label="Add task"
+
+      class="
+        fixed
+
+        bottom-[18px]
+        right-[10%]
+
+        flex
+        h-16
+        w-16
+
+        items-center
+        justify-center
+
+        rounded-full
+
+        bg-[#665cf6]
+
+        text-white
+
+        shadow-lg
+
+        transition
+
+        hover:scale-105
+      "
+    >
+
+      <svg
+        width="35"
+        height="35"
+
+        viewBox="0 0 35 35"
+
+        fill="none"
+      >
+
+        <path
+          d="M17.5 7V28M7 17.5H28"
+
+          stroke="white"
+
+          stroke-width="3.2"
+
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+    </button>
+
+  </div>
+
+
+
+  
+
+  <div
+    id="modal"
+
+    class="
+      fixed
+      inset-0
+      z-50
+
+      hidden
+
+      items-center
+      justify-center
+
+      bg-black/30
+
+      px-5
+    "
+  >
+
+    <div
+      id="modalContent"
+
+      class="
+        w-full
+        max-w-md
+
+        rounded-2xl
+
+        bg-white
+
+        p-6
+
+        shadow-2xl
+
+        transition-colors
+        duration-300
+      "
+    >
+
+      <h2
+        id="modalTitle"
+
+        class="
+          text-xl
+          font-bold
+
+          text-[#292929]
+
+          transition-colors
+          duration-300
+        "
+      >
+        Add a task
+      </h2>
+
+
+     
+
+      <input
+        id="taskInput"
+
+        type="text"
+
+        placeholder="Write a task..."
+
+        class="
+          mt-4
+
+          h-12
+          w-full
+
+          rounded-lg
+
+          border-2
+          border-[#665cf6]
+
+          bg-white
+
+          px-4
+
+          text-black
+
+          outline-none
+
+          transition-colors
+          duration-300
+
+          placeholder:text-gray-400
+        "
+      >
+
+
+      <!-- BUTTONS -->
+
+      <div
+        class="
+          mt-5
+
+          flex
+          justify-end
+
+          gap-3
+        "
+      >
+
+        <button
+          id="cancelBtn"
+
+          type="button"
+
+          class="
+            rounded-lg
+
+            px-4
+            py-2
+
+            font-semibold
+
+            text-gray-500
+
+            transition
+
+            hover:bg-gray-100
+          "
+        >
+          Cancel
+        </button>
+
+
+        <button
+          id="saveBtn"
+
+          type="button"
+
+          class="
+            rounded-lg
+
+            bg-[#665cf6]
+
+            px-5
+            py-2
+
+            font-semibold
+            text-white
+
+            transition
+
+            hover:opacity-90
+          "
+        >
+          Add
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  
+  <script>
+
+
+   
+
+    let todos = [];
+
+    try {
+
+      todos =
+        JSON.parse(
+          localStorage.getItem("todos") || "[]"
+        );
+
+      if (!Array.isArray(todos)) {
+
+        todos = [];
+
+      }
+
+    } catch (error) {
+
+      todos = [];
+
+    }
+
+
+
+    
+
+    const body =
+      document.getElementById("body");
+
+    const pageTitle =
+      document.getElementById("pageTitle");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const filterSelect =
+      document.getElementById("filterSelect");
+
+    const themeBtn =
+      document.getElementById("themeBtn");
+
+    const moonIcon =
+      document.getElementById("moonIcon");
+
+    const sunIcon =
+      document.getElementById("sunIcon");
+
+    const emptyState =
+      document.getElementById("emptyState");
+
+    const emptyText =
+      document.getElementById("emptyText");
+
+    const todoList =
+      document.getElementById("todoList");
+
+    const addBtn =
+      document.getElementById("addBtn");
+
+    const modal =
+      document.getElementById("modal");
+
+    const modalContent =
+      document.getElementById("modalContent");
+
+    const modalTitle =
+      document.getElementById("modalTitle");
+
+    const taskInput =
+      document.getElementById("taskInput");
+
+    const cancelBtn =
+      document.getElementById("cancelBtn");
+
+    const saveBtn =
+      document.getElementById("saveBtn");
+
+
+
+   
+    let isDark =
+      localStorage.getItem("darkMode") === "true";
+
+
+
+   
+
+    function setLightMode() {
+
+      isDark = false;
+
+
+      localStorage.setItem(
+        "darkMode",
+        "false"
+      );
+
+
+     
+
+      body.classList.remove(
+        "bg-[#17162a]",
+        "text-white"
+      );
+
+      body.classList.add(
+        "bg-[#fafafa]",
+        "text-[#292929]"
+      );
+
+
+     
+
+      pageTitle.classList.remove(
+        "text-white"
+      );
+
+      pageTitle.classList.add(
+        "text-[#292929]"
+      );
+
+
+     
+
+      searchInput.classList.remove(
+        "bg-[#24223b]",
+        "text-white",
+        "placeholder:text-[#aaa7c7]"
+      );
+
+      searchInput.classList.add(
+        "bg-white",
+        "text-black",
+        "placeholder:text-gray-400"
+      );
+
+
+      
+      emptyText.classList.remove(
+        "text-white"
+      );
+
+      emptyText.classList.add(
+        "text-[#292929]"
+      );
+
+
+      
+
+      modalContent.classList.remove(
+        "bg-[#24223b]"
+      );
+
+      modalContent.classList.add(
+        "bg-white"
+      );
+
+
+      
+      modalTitle.classList.remove(
+        "text-white"
+      );
+
+      modalTitle.classList.add(
+        "text-[#292929]"
+      );
+
+
+      
+
+      taskInput.classList.remove(
+        "bg-[#24223b]"
+      );
+
+      taskInput.classList.add(
+        "bg-white"
+      );
+
+
+      taskInput.classList.remove(
+        "text-white"
+      );
+
+      taskInput.classList.add(
+        "text-black"
+      );
+
+
+      
+      taskInput.classList.remove(
+        "placeholder:text-[#aaa7c7]"
+      );
+
+      taskInput.classList.add(
+        "placeholder:text-gray-400"
+      );
+
+
+      
+      cancelBtn.classList.remove(
+        "text-gray-300",
+        "hover:bg-[#34314f]"
+      );
+
+      cancelBtn.classList.add(
+        "text-gray-500",
+        "hover:bg-gray-100"
+      );
+
+
+      
+
+      modal.classList.remove(
+        "bg-black/60"
+      );
+
+      modal.classList.add(
+        "bg-black/30"
+      );
+
+
+      
+
+      moonIcon.classList.remove(
+        "hidden"
+      );
+
+      sunIcon.classList.add(
+        "hidden"
+      );
+
+
+      
+      renderTodos();
+
+    }
+
+
+
+   
+    function setDarkMode() {
+
+      isDark = true;
+
+
+      localStorage.setItem(
+        "darkMode",
+        "true"
+      );
+
+
+      
+
+      body.classList.remove(
+        "bg-[#fafafa]",
+        "text-[#292929]"
+      );
+
+      body.classList.add(
+        "bg-[#17162a]",
+        "text-white"
+      );
+
+
+     
+
+      pageTitle.classList.remove(
+        "text-[#292929]"
+      );
+
+      pageTitle.classList.add(
+        "text-white"
+      );
+
+
+      
+
+      searchInput.classList.remove(
+        "bg-white",
+        "text-black",
+        "placeholder:text-gray-400"
+      );
+
+      searchInput.classList.add(
+        "bg-[#24223b]",
+        "text-white",
+        "placeholder:text-[#aaa7c7]"
+      );
+
+
+     
+
+      emptyText.classList.remove(
+        "text-[#292929]"
+      );
+
+      emptyText.classList.add(
+        "text-white"
+      );
+
+
+     
+      modalContent.classList.remove(
+        "bg-white"
+      );
+
+      modalContent.classList.add(
+        "bg-[#24223b]"
+      );
+
+
+      
+      modalTitle.classList.remove(
+        "text-[#292929]"
+      );
+
+      modalTitle.classList.add(
+        "text-white"
+      );
+
+
+     
+      taskInput.classList.remove(
+        "bg-white"
+      );
+
+      taskInput.classList.add(
+        "bg-[#24223b]"
+      );
+
+
+      
+      taskInput.classList.remove(
+        "text-white"
+      );
+
+      taskInput.classList.add(
+        "text-black"
+      );
+
+
+     
+
+      taskInput.classList.remove(
+        "placeholder:text-gray-400"
+      );
+
+      taskInput.classList.add(
+        "placeholder:text-[#aaa7c7]"
+      );
+
+
+      
+
+      cancelBtn.classList.remove(
+        "text-gray-500",
+        "hover:bg-gray-100"
+      );
+
+      cancelBtn.classList.add(
+        "text-gray-300",
+        "hover:bg-[#34314f]"
+      );
+
+
+      
+
+      modal.classList.remove(
+        "bg-black/30"
+      );
+
+      modal.classList.add(
+        "bg-black/60"
+      );
+
+
+      
+
+      moonIcon.classList.add(
+        "hidden"
+      );
+
+      sunIcon.classList.remove(
+        "hidden"
+      );
+
+
+      
+      renderTodos();
+
+    }
+
+
+
+    
+
+    themeBtn.addEventListener(
+      "click",
+
+      function () {
+
+        if (isDark) {
+
+         
+
+          setLightMode();
+
+        } else {
+
+          
+
+          setDarkMode();
+
+        }
+
+      }
+    );
+
+
+
+    
+
+    function saveTodos() {
+
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(todos)
+      );
+
+    }
+
+
+
+    
+
+    function escapeHtml(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        String(text);
+
+      return div.innerHTML;
+
+    }
+
+
+
+    
+
+    function renderTodos() {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      const filter =
+        filterSelect.value;
+
+
+      const filteredTodos =
+        todos.filter(
+          todo => {
+
+            const text =
+              String(todo.text || "");
+
+
+            const matchesSearch =
+              text
+                .toLowerCase()
+                .includes(search);
+
+
+            const matchesFilter =
+
+              filter === "all" ||
+
+              (
+                filter === "active" &&
+                !todo.done
+              ) ||
+
+              (
+                filter === "completed" &&
+                todo.done
+              );
+
+
+            return (
+              matchesSearch &&
+              matchesFilter
+            );
+
+          }
+        );
+
+
+
+      
+      if (
+        filteredTodos.length === 0
+      ) {
+
+        emptyState.classList.remove(
+          "hidden"
+        );
+
+        todoList.classList.add(
+          "hidden"
+        );
+
+        return;
+
+      }
+
+
+
+      
+
+      emptyState.classList.add(
+        "hidden"
+      );
+
+      todoList.classList.remove(
+        "hidden"
+      );
+
+
+
+      todoList.innerHTML =
+        filteredTodos
+          .map(
+            todo => {
+
+              const cardBg =
+                isDark
+                  ? "bg-[#24223b]"
+                  : "bg-white";
+
+
+              const cardBorder =
+                isDark
+                  ? "border-[#3b3860]"
+                  : "border-gray-100";
+
+
+              const textColor =
+                isDark
+                  ? "text-white"
+                  : "text-[#292929]";
+
+
+              const checkboxBorder =
+                isDark
+                  ? "border-gray-500"
+                  : "border-gray-300";
+
+
+
+              return `
+
+                <div
+                  class="
+                    todo-item
+
+                    flex
+                    items-center
+                    gap-4
+
+                    rounded-xl
+
+                    border
+
+                    ${cardBorder}
+
+                    ${cardBg}
+
+                    p-4
+
+                    shadow-sm
+
+                    transition-colors
+                    duration-300
+                  "
+                >
+
+
+                  <!-- CHECK BUTTON -->
+
+                  <button
+                    type="button"
+
+                    data-action="toggle"
+
+                    data-id="${todo.id}"
+
+                    class="
+                      flex
+
+                      h-6
+                      w-6
+
+                      shrink-0
+
+                      items-center
+                      justify-center
+
+                      rounded-full
+
+                      border-2
+
+                      ${
+                        todo.done
+                          ? "border-[#665cf6] bg-[#665cf6]"
+                          : checkboxBorder
+                      }
+                    "
+                  >
+
+                    ${
+                      todo.done
+                        ? '<span class="text-xs text-white">✓</span>'
+                        : ""
+                    }
+
+                  </button>
+
+
+
+                  <!-- TEXT -->
+
+                  <span
+                    class="
+                      flex-1
+
+                      break-words
+
+                      text-lg
+
+                      ${textColor}
+
+                      ${
+                        todo.done
+                          ? "line-through opacity-50"
+                          : ""
+                      }
+                    "
+                  >
+                    ${escapeHtml(todo.text)}
+                  </span>
+
+
+
+                  <!-- DELETE -->
+
+                  <button
+                    type="button"
+
+                    data-action="delete"
+
+                    data-id="${todo.id}"
+
+                    class="
+                      shrink-0
+
+                      rounded-lg
+
+                      px-3
+                      py-2
+
+                      text-sm
+                      font-semibold
+
+                      text-red-400
+
+                      hover:bg-red-50
+                    "
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+    }
+
+
+
+    
+    addBtn.addEventListener(
+      "click",
+
+      function () {
+
+        modal.classList.remove(
+          "hidden"
+        );
+
+        modal.classList.add(
+          "flex"
+        );
+
+
+        setTimeout(
+          function () {
+
+            taskInput.focus();
+
+          },
+          100
+        );
+
+      }
+    );
+
+
+
+   
+    function closeModal() {
+
+      modal.classList.add(
+        "hidden"
+      );
+
+      modal.classList.remove(
+        "flex"
+      );
+
+
+      taskInput.value = "";
+
+    }
+
+
+
+    cancelBtn.addEventListener(
+      "click",
+      closeModal
+    );
+
+
+
+    
+
+    modal.addEventListener(
+      "click",
+
+      function (event) {
+
+        if (
+          event.target === modal
+        ) {
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+
+    
+
+    function addTodo() {
+
+      const text =
+        taskInput.value.trim();
+
+
+      if (!text) {
+
+        taskInput.focus();
+
+        return;
+
+      }
+
+
+      todos.push({
+
+        id: Date.now(),
+
+        text: text,
+
+        done: false
+
+      });
+
+
+      saveTodos();
+
+      closeModal();
+
+      renderTodos();
+
+    }
+
+
+
+    saveBtn.addEventListener(
+      "click",
+      addTodo
+    );
+
+
+
+   
+
+    taskInput.addEventListener(
+      "keydown",
+
+      function (event) {
+
+        if (
+          event.key === "Enter"
+        ) {
+
+          event.preventDefault();
+
+          addTodo();
+
+        }
+
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+
+   
+
+    todoList.addEventListener(
+      "click",
+
+      function (event) {
+
+        const button =
+          event.target.closest(
+            "button"
+          );
+
+
+        if (!button) {
+          return;
+        }
+
+
+        const id =
+          Number(
+            button.dataset.id
+          );
+
+
+        const action =
+          button.dataset.action;
+
+
+        if (
+          action === "toggle"
+        ) {
+
+          toggleTodo(id);
+
+        }
+
+
+        if (
+          action === "delete"
+        ) {
+
+          deleteTodo(id);
+
+        }
+
+      }
+    );
+
+
+
+   
+
+    function toggleTodo(id) {
+
+      todos =
+        todos.map(
+          todo => {
+
+            if (
+              todo.id === id
+            ) {
+
+              return {
+
+                ...todo,
+
+                done:
+                  !todo.done
+
+              };
+
+            }
+
+
+            return todo;
+
+          }
+        );
+
+
+      saveTodos();
+
+      renderTodos();
+
+    }
+
+
+
+    
+
+    function deleteTodo(id) {
+
+      todos =
+        todos.filter(
+          todo =>
+            todo.id !== id
+        );
+
+
+      saveTodos();
+
+      renderTodos();
+
+    }
+
+
+
+   
+
+    searchInput.addEventListener(
+      "input",
+      renderTodos
+    );
+
+
+
+    
+    filterSelect.addEventListener(
+      "change",
+      renderTodos
+    );
+
+
+
+
+    if (isDark) {
+
+      setDarkMode();
+
+    } else {
+
+      setLightMode();
+
+    } 
+
+  </script>
+  
+
+</body>
+
+</html>
